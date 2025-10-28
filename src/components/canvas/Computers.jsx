@@ -46,31 +46,37 @@ const ComputersCanvas = () => {
     };
   }, []);
 
-  // Define scale, position, and rotation based on device
-  let scale, position, rotation;
+  // Define scale, position, rotation, and camera settings based on device
+  let scale, position, rotation, cameraFov, cameraPosition;
 
   const cameraTarget = [0, -0.75, -1.5];
 
   if (isMobile) {
-    scale = 0.26; // Larger presence on mobile
-    position = [0.95, -0.82, -1.5];   // Keep to the right to avoid clipping
+    scale = 0.55; // Much larger on mobile for better visibility
+    position = [0.9, -0.82, -1.5];   // Shifted right to show left speaker
     rotation = [0, -0.1, 0];   // Angled toward user
+    cameraFov = 35; // Wider FOV for mobile to make model appear larger
+    cameraPosition = [20, 3, 12]; // Closer camera position
   } else if (isTablet) {
-    scale = 0.38;                      // Slightly smaller
+    scale = 0.45;                      // Larger for tablet
     position = [0.25, -0.78, -1.5];   // Nudge a bit more to the right
     rotation = [0, -0.1, 0];           // Angled toward user
+    cameraFov = 28; // Slightly wider FOV for tablet
+    cameraPosition = [20, 3, 13];
   } else {
     scale = 0.6;
     position = [-0.5, -0.75, -1.5];    // Slightly left for desktop
     rotation = [0, -0.1, 0];           // Angled toward user
+    cameraFov = 25; // Standard FOV for desktop
+    cameraPosition = [20, 3, 15];
   }
 
   return (
     <div style={{ width: '100%', height: '100vh', position: 'relative' }}>
       <Canvas
         camera={{
-          position: [20, 3, 15], // Reverted to original camera position
-          fov: 25,
+          position: cameraPosition,
+          fov: cameraFov,
           near: 1,
           far: 100,
         }}
