@@ -4,7 +4,6 @@ import { SectionWrapper } from "../hoc";
 import { technologies } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
 import { styles } from "../styles";
-import { laravel, backend } from "../assets";
 
 const Tech = () => {
   return (
@@ -30,24 +29,6 @@ const Tech = () => {
             />
           </div>
         ))}
-        <div
-          className='w-28 h-28 flex items-center justify-center rounded-full bg-tertiary hover:bg-white/10 transition-colors duration-200 cursor-pointer'
-        >
-          <img
-            src={laravel}
-            alt="Laravel"
-            className='w-20 h-20 object-contain'
-          />
-        </div>
-        <div
-          className='w-28 h-28 flex items-center justify-center rounded-full bg-tertiary hover:bg-white/10 transition-colors duration-200 cursor-pointer'
-        >
-          <img
-            src={backend}
-            alt="Backend"
-            className='w-20 h-20 object-contain'
-          />
-        </div>
       </motion.div>
     </>
   );

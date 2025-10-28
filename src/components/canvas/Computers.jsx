@@ -28,16 +28,13 @@ const ComputersCanvas = () => {
     
     setIsMobile(mobileQuery.matches);
     setIsTablet(tabletQuery.matches);
-    
 
     const handleMobileQueryChange = (event) => {
       setIsMobile(event.matches);
-      
     };
 
     const handleTabletQueryChange = (event) => {
       setIsTablet(event.matches);
-      
     };
 
     mobileQuery.addEventListener("change", handleMobileQueryChange);
@@ -55,14 +52,13 @@ const ComputersCanvas = () => {
   const cameraTarget = [0, -0.75, -1.5];
 
   if (isMobile) {
-    // Smaller and more centered on small screens
-    scale = 0.28;
-    position = [0.38, -0.9, -1.8];
-    rotation = [0, -0.1, 0];
+    scale = 0.26; // Larger presence on mobile
+    position = [0.95, -0.82, -1.5];   // Keep to the right to avoid clipping
+    rotation = [0, -0.1, 0];   // Angled toward user
   } else if (isTablet) {
-    scale = 0.38;
-    position = [0.2, -0.85, -1.6];
-    rotation = [0, -0.1, 0];
+    scale = 0.38;                      // Slightly smaller
+    position = [0.25, -0.78, -1.5];   // Nudge a bit more to the right
+    rotation = [0, -0.1, 0];           // Angled toward user
   } else {
     scale = 0.6;
     position = [-0.5, -0.75, -1.5];    // Slightly left for desktop
@@ -70,7 +66,7 @@ const ComputersCanvas = () => {
   }
 
   return (
-    <div style={{ width: '100%', height: isMobile ? '85vh' : '100vh', position: 'relative' }}>
+    <div style={{ width: '100%', height: '100vh', position: 'relative' }}>
       <Canvas
         camera={{
           position: [20, 3, 15], // Reverted to original camera position
@@ -84,29 +80,24 @@ const ComputersCanvas = () => {
           top: 0,
           left: 0,
           width: '100%',
-          height: '100%',
-          pointerEvents: isMobile ? 'none' : 'auto'
+          height: '100%'
         }}
-        dpr={[1, 2]}
       >
         <Suspense fallback={<CanvasLoader />}>
           <OrbitControls
             target={cameraTarget}
-            enableZoom={!isMobile}
-            enablePan={!isMobile}
-            enableRotate={!isMobile}
-            maxPolarAngle={Math.PI / 2 + 0.35}
-            minPolarAngle={Math.PI / 2 - 0.4}
-            maxDistance={35}
-            minDistance={4}
-            zoomSpeed={0.7}
-            rotateSpeed={0.9}
-            panSpeed={0.8}
+            enableZoom={true}
+            enablePan={true}
+            enableRotate={true}
+            maxPolarAngle={Math.PI / 2 + 0.3} // Allow tilting down
+            minPolarAngle={Math.PI / 2 - 0.3} // Allow tilting up
+            maxDistance={50}
+            minDistance={5}
+            zoomSpeed={0.5}
           />
           <Computers scale={scale} position={position} rotation={rotation} />
         </Suspense>
       </Canvas>
-      {/* Instruction text moved to Hero.jsx above the scroll indicator */}
     </div>
   );
 };
