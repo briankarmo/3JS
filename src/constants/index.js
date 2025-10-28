@@ -1,7 +1,4 @@
 import {
-  backend,
-  creator,
-  web,
   javascript,
   typescript,
   html,
@@ -15,11 +12,13 @@ import {
   figma,
   docker,
   threejs,
+  aws,
   laravel,
   next,
   postgresql,
   python,
   mern,
+  bkcodetube,
   shutterProject,
   weather,
   govlink,
@@ -35,7 +34,7 @@ export const navLinks = [
     title: "About",
   },
   {
-    id: "work",
+    id: "projects",
     title: "Projects",
   },
   {
@@ -116,14 +115,6 @@ const technologies = [
     name: "docker",
     icon: docker,
   },
-  {
-    name: "Laravel",
-    icon: laravel,
-  },
-  {
-    name: "Backend",
-    icon: backend,
-  },
 ];
 
 const experiences = [
@@ -164,17 +155,19 @@ const testimonials = [
     company: "Upwork",
     date: "Jan 31, 2025 - Feb 7, 2025",
     rating: 5,
-    image: "https://randomuser.me/api/portraits/men/62.jpg",
+    image: "https://randomuser.me/api/portraits/men/4.jpg",
+    link: "https://shutterguide.io",
   },
   {
     testimonial:
       "Brian is an all star at what he does (full-stack) and is an absolute pleasure to work with! Highly recommended. He is smart and agile.",
-    name: "Build GovLink Global Platform using MERN Stack",
+    name: "GovLinkGlobal.com — Build GovLink Global Platform using MERN Stack",
     designation: "Client",
     company: "Upwork",
     date: "Apr 17, 2025 - Sep 6, 2025",
     rating: 5,
     image: "https://randomuser.me/api/portraits/men/64.jpg",
+    link: "https://govlinkglobal.com",
   },
   {
     testimonial:
@@ -184,7 +177,7 @@ const testimonials = [
     company: "Upwork",
     date: "Feb 13, 2025 - Feb 16, 2025",
     rating: 5,
-    image: "https://randomuser.me/api/portraits/men/72.jpg",
+    image: "https://i.pravatar.cc/150?img=12",
   },
 ];
 
@@ -208,29 +201,21 @@ const projects = [
       },
     ],
     image: weather,
-    source_code_link: "https://github.com/",
+    source_code_link: null,
     live_site_link: "https://bkinc-weather.netlify.app",
   },
   {
-    name: "GovLink Global Platform",
+    name: "GovLink Global",
     description:
       "MERN platform connecting elite consultants with US & global government projects. Smart search & matching; 2.4k+ talent, 98% success, ~48h avg match. Built for scale with clean, user-focused UI/UX.",
     tags: [
-      {
-        name: "react",
-        color: "blue-text-gradient",
-      },
-      {
-        name: "mongodb",
-        color: "green-text-gradient",
-      },
-      {
-        name: "nodejs",
-        color: "pink-text-gradient",
-      },
+      { name: "mern", color: "blue-text-gradient" },
+      { name: "react", color: "green-text-gradient" },
+      { name: "nodejs", color: "pink-text-gradient" },
     ],
     image: govlink,
-    source_code_link: "https://github.com/",
+    image_alt: "GovLink Global platform UI, built with MERN and user-focused UX",
+    source_code_link: null,
     live_site_link: "https://govlinkglobal.com",
   },
   {
@@ -242,14 +227,17 @@ const projects = [
         name: "react",
         color: "blue-text-gradient",
       },
-      
+      {
+        name: "aws",
+        color: "green-text-gradient",
+      },
       {
         name: "css",
         color: "pink-text-gradient",
       },
     ],
     image: shutterProject,
-    source_code_link: "https://github.com/",
+    source_code_link: null,
     live_site_link: "https://shutterguide.io",
   },
 ];

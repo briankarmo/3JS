@@ -32,6 +32,7 @@ const FeedbackCard = ({
   image,
   date,
   rating,
+  link,
 }) => (
   <motion.div
     variants={fadeIn("", "spring", index * 0.5, 0.75)}
@@ -51,14 +52,20 @@ const FeedbackCard = ({
       <div className='mt-7 flex flex-col gap-3'>
         <div className='flex justify-between items-center gap-1'>
           <div className='flex-1 flex flex-col'>
-            <a 
-              href="https://www.upwork.com/freelancers/briankarmo?mp_source=share"
-              target="_blank"
-              rel="noopener noreferrer"
-              className='text-white font-medium text-[16px] hover:text-[#14a800] transition-colors'
-            >
-              <span className='blue-text-gradient'>@</span> {name}
-            </a>
+            {link ? (
+              <a 
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className='text-white font-medium text-[16px] hover:text-blue-500 transition-colors'
+              >
+                <span className='blue-text-gradient'>@</span> {name}
+              </a>
+            ) : (
+              <span className='text-white font-medium text-[16px]'>
+                <span className='blue-text-gradient'>@</span> {name}
+              </span>
+            )}
             <p className='mt-1 text-secondary text-[12px]'>
               {designation} of {company}
             </p>
@@ -94,18 +101,10 @@ const Feedbacks = () => {
           <h2 className={styles.sectionHeadText}>Testimonials.</h2>
         </motion.div>
       </div>
-      <div className={`-mt-20 pb-14 ${styles.paddingX} grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 place-items-center`}>
-        {testimonials.map((testimonial, index) => {
-          const isLast = index === testimonials.length - 1;
-          return (
-            <div
-              key={testimonial.name}
-              className={`${isLast ? 'sm:col-span-2 lg:col-span-1 justify-self-center sm:mx-auto' : ''} w-full`}
-            >
-              <FeedbackCard index={index} {...testimonial} />
-            </div>
-          );
-        })}
+      <div className={`-mt-20 pb-14 ${styles.paddingX} flex flex-wrap gap-7`}>
+        {testimonials.map((testimonial, index) => (
+          <FeedbackCard key={testimonial.name} index={index} {...testimonial} />
+        ))}
       </div>
       
       <div className="flex justify-center items-center pb-10">
@@ -113,7 +112,7 @@ const Feedbacks = () => {
           href="https://www.upwork.com/freelancers/briankarmo?mp_source=share"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 px-5 py-2.5 bg-[#14a800] hover:bg-[#0f8f00] rounded-xl transition-colors duration-300"
+          className="flex items-center gap-2 px-4 py-2 bg-tertiary rounded-xl hover:bg-[#14a800] transition-colors duration-300"
         >
           <svg className="w-6 h-6" viewBox="0 0 512 512" fill="currentColor">
             <path d="M357.2,296.9c-17,0-33-7.2-47.4-18.9l3.5-16.6l0.1-0.6c3.2-17.6,13.1-47.2,43.8-47.2c23,0,41.7,18.7,41.7,41.7
